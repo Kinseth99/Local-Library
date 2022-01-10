@@ -67,7 +67,17 @@ function getMostPopularAuthors(books, authors) {
    });
    result.push(theAuthor);
  });
- return result.sort((more, less) => less.count - more.count).slice(0,5);
+  //user helper function to sort and limit array
+return shortenArray(result);
+}
+
+
+function shortenArray(arrayToShorten) {
+  arrayToShorten.sort((indexA, indexB) =>
+  indexA.count < indexB.count ? 1 : -1
+  );
+  const shortened = arrayToShorten.slice(0, 5);
+  return shortened;
 }
 
 module.exports = {
